@@ -5,7 +5,7 @@
 void miFuncion()
 {
     for(int i=0; i<1000; i++) {
-        std::cout << "Hola mundo." << std::endl;
+        std::cout << i << std::endl;
     }
 }
 

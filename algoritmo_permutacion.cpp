@@ -9,7 +9,7 @@ using namespace std;
 // output:3 4 0 1 2
 int *inverse_perm(int perm[], int n){
     int *inv_perm = (int *) malloc(n*sizeof(int));
-    for(int i=0; i<5; i++){
+    for(int i=0; i<n; i++){
         inv_perm[perm[i]] = i;
     }
     //wait
