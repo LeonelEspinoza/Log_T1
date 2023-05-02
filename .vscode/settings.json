@@ -45,13 +45,7 @@
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-<<<<<<< HEAD
         "typeinfo": "cpp",
         "iostream": "cpp"
     }
-=======
-        "typeinfo": "cpp"
-    },
-    "cmake.configureOnOpen": true
->>>>>>> 81f771d563a3655afe3b9765865ab96042a07c35
 }
