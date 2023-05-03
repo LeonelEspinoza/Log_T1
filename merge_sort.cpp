@@ -13,9 +13,16 @@ using namespace std;
 //Merge Sort con aridad variable
 int *mergesort(){
     //hola
+    //int a;
     return &0;
 }
 
+/*int *init_arr(int arr[],int n){
+    const int n=20;
+    int arr_par[n][2];
+
+    return arr_par;
+}*/
 
 // inverse_perm: int[] x int -> int[]
 // Calcula la inversa de una permutacion con merge sort
