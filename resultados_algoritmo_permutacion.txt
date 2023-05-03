@@ -1,4 +1,20 @@
-Para n = 1073741824
-El elemento inv_perm[perm[n-1]-1] es 1073741824 y el elemento perm[n-1] es 440507952
-La funcion tardo 22408 milisegundos en ejecutarse.
+La funcion tardo 77 milisegundos en ejecutarse.
+
+La funcion tardo 64 milisegundos en ejecutarse.
+
+La funcion tardo 67 milisegundos en ejecutarse.
+
+La funcion tardo 65 milisegundos en ejecutarse.
+
+La funcion tardo 66 milisegundos en ejecutarse.
+
+La funcion tardo 67 milisegundos en ejecutarse.
+
+La funcion tardo 64 milisegundos en ejecutarse.
+
+La funcion tardo 65 milisegundos en ejecutarse.
+
+La funcion tardo 65 milisegundos en ejecutarse.
+
+La funcion tardo 69 milisegundos en ejecutarse.
 
