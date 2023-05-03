@@ -7,33 +7,101 @@
 
 using namespace std;
 
-
-
-
-//Merge Sort con aridad variable
-int *mergesort(){
-    //hola
-    //int a;
-    return &0;
+/*
+void merge(int arr[][],int start, int len, int end, int d){
+    
+    //arreglo de sub arreglos
+    int sub_arr[d][len][2];
+    int sub_arr_ptr[d];
+    for(int i=0;i<d;i++){
+        for(int j=0;j<len;j++){
+            sub_arr[i][j]=arr[start+i*len+j];
+        }
+        sub_arr_ptr[i]=0;
+    }
+    //hasta que se ordenen end-start+1==n elementos
+    for(int c=0;c<end-start+1;c++){
+        //ver cual es el primer sub_arreglo no vacio
+        int ptr=0;
+        while(sub_arr_ptr[ptr]>len){
+            ptr++;
+        }
+        //obtener el primer elemento del primer sub_arreglo no vacio
+        int *min=sub_arr[ptr][sub_arr_ptr[ptr]];
+        int min_ptr=ptr;
+        //busco el minimo elemento de los sub arreglos
+        for(int i=0;i<d;i++){
+            //si el subarreglo esta vacio voy al siguiente
+            if(sub_arr_ptr[i]>len){
+                continue;
+            }
+            //obtengo el minimo
+            int *mc=sub_arr[i][sub_arr_ptr[i]];
+            if(mc[1]<min[1]){
+                min=mc;
+                min_ptr=i;
+            }
+        }
+        //guardo el minimo en el arreglo
+        arr[start+c]=min;
+        //saco el elemento del subarreglo que tenia el minimo
+        sub_arr_ptr[min_ptr]++;
+    }
+    return;
 }
 
-/*int *init_arr(int arr[],int n){
-    const int n=20;
+//Merge Sort con aridad d 
+void mergesort(int arr[][],int start,int end,int d,int n){
+    //si termina antes de empezar return
+    if(start>=end){
+        return;
+    }
+    
+    //si hay menos elementos en el arreglos que aridad
+    if(n<d){
+        //ordeno de a 1 elemento
+        merge(arr,start,1,end,n);
+        return;
+    } 
+    //obtengo largo de los subarreglos
+    int len=int(n/d);
+    for(int cut=start; cut<(end-start); cut+=len){
+        mergesort(arr[][],cut,cut+len-1,d,len);
+    }
+    merge(arr, start, len, end, d);
+    return;
+}*/
+
+int *init_arr(int arr[],int n){
     int arr_par[n][2];
+    for(int i=0;i<n;i++){
+        arr_par[i][1]=arr[i];
+        arr_par[i][2]=i;
+    }
 
     return arr_par;
-}*/
+}
 
 // inverse_perm: int[] x int -> int[]
 // Calcula la inversa de una permutacion con merge sort
 // Ejemplo:
 // Input: 2 3 4 0 1
 // Output:3 4 0 1 2
-int *inverse_perm_merge(int perm[], int n){
+int *inverse_perm_merge(int perm[][], int n){
+    int n_2= int(n/2);
+    int left[n_2][2];
+    int right[n-n_2][2];
+
+    for(int i=0;i<n_2;i++){
+        left[i]=perm[i];
+        right[i]=perm[i+n_2];
+    }
+
     int *inv_perm = (int *) malloc(n*sizeof(int));
     for(int i=0; i<n; i++){
         inv_perm[perm[i]-1] = i+1;
     }
+
     return inv_perm;
 }
 
@@ -47,12 +115,23 @@ void mainforcase (int n, int i, int j, int res[]){
 
     //Se permuta el arreglo de manera aleatoria
     std::shuffle(arr, arr + n, std::mt19937{std::random_device{}()});
-
+    
+    //Se crea un arreglo de tamaño n arreglos de dos int
+    int arr_par[n][2];
+    
+    //Se inicializa el arreglo de pares con arr_par[i]=[valor_i,posicion_i]
+    for(int i=0;i<n;i++){
+        //Se guarda el valor
+        arr_par[i][1]=arr[i];
+        //Se guarda su posicion
+        arr_par[i][2]=i+1;
+    }
+    
     //Se inicia el cronometro
     auto inicio = chrono::high_resolution_clock::now();
 
     //Se calcula la permutación inversa con merge sort
-    int *ip = inverse_perm_merge(arr, n);
+    int *ip = inverse_perm_merge(arr_par, n);
 
     //Se finaliza el cronometro
     auto fin = chrono::high_resolution_clock::now();
