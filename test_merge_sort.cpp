@@ -59,13 +59,17 @@ void merge(int **arr,int start, int end, int d){
                 min[1]=mc[1];
                 min_ptr=i;
             }
+            delete[] mc;
         }
         //guardo el minimo en el arreglo
         arr[start+c][0]=min[0];
         arr[start+c][1]=min[1];
         //saco el elemento del subarreglo que tenia el minimo
         sub_arr_ptr[min_ptr]+=1;
+        delete [] min;
     }
+    delete [] sub_arr;
+    delete [] sub_arr_ptr;
     return;
 }
 

@@ -7,15 +7,27 @@
 
 using namespace std;
 
-/*
-void merge(int arr[][],int start, int len, int end, int d){
-    
-    //arreglo de sub arreglos
-    int sub_arr[d][len][2];
-    int sub_arr_ptr[d];
+void merge(int **arr,int start, int end, int d){
+    //cantidad de elementos a ordenar
+    int n=end-start+1;
+    //tamaño sub arreglos
+    int len=int(n/d);
+    //arreglo de sub_arreglos
+    //int sub_arr[d][len][2];
+    int ***sub_arr=new int**[d];
+    for(int i=0; i<d; i++){
+        sub_arr[i]=new int*[len];
+        for(int j=0;j<len;j++){
+            sub_arr[i][j]=new int[2];
+        }
+    }
+    //arreglo de al posicion del minimo elemento no guardado de cada sub_arreglo
+    //int sub_arr_ptr[d];
+    int *sub_arr_ptr=new int[d];
     for(int i=0;i<d;i++){
         for(int j=0;j<len;j++){
-            sub_arr[i][j]=arr[start+i*len+j];
+            sub_arr[i][j][0]=arr[start+i*len+j][0];
+            sub_arr[i][j][1]=arr[start+i*len+j][1];
         }
         sub_arr_ptr[i]=0;
     }
@@ -23,63 +35,63 @@ void merge(int arr[][],int start, int len, int end, int d){
     for(int c=0;c<end-start+1;c++){
         //ver cual es el primer sub_arreglo no vacio
         int ptr=0;
-        while(sub_arr_ptr[ptr]>len){
+        while(sub_arr_ptr[ptr]>len-1){
             ptr++;
         }
         //obtener el primer elemento del primer sub_arreglo no vacio
-        int *min=sub_arr[ptr][sub_arr_ptr[ptr]];
+        int *min=new int[2];
+        min[0]=sub_arr[ptr][sub_arr_ptr[ptr]][0];
+        min[1]=sub_arr[ptr][sub_arr_ptr[ptr]][1];
         int min_ptr=ptr;
         //busco el minimo elemento de los sub arreglos
         for(int i=0;i<d;i++){
             //si el subarreglo esta vacio voy al siguiente
-            if(sub_arr_ptr[i]>len){
+            if(sub_arr_ptr[i]>len-1){
                 continue;
             }
             //obtengo el minimo
-            int *mc=sub_arr[i][sub_arr_ptr[i]];
-            if(mc[1]<min[1]){
-                min=mc;
+            int *mc=new int[2];
+            mc[0]=sub_arr[i][sub_arr_ptr[i]][0];
+            mc[1]=sub_arr[i][sub_arr_ptr[i]][1];
+            if(mc[0]<min[0]){
+                min[0]=mc[0];
+                min[1]=mc[1];
                 min_ptr=i;
             }
+            delete[] mc;
         }
         //guardo el minimo en el arreglo
-        arr[start+c]=min;
+        arr[start+c][0]=min[0];
+        arr[start+c][1]=min[1];
         //saco el elemento del subarreglo que tenia el minimo
-        sub_arr_ptr[min_ptr]++;
+        sub_arr_ptr[min_ptr]+=1;
+        delete [] min;
     }
+    delete [] sub_arr;
+    delete [] sub_arr_ptr;
     return;
 }
 
 //Merge Sort con aridad d 
-void mergesort(int arr[][],int start,int end,int d,int n){
+void mergeSort(int **arr,int start,int end,int d){
     //si termina antes de empezar return
     if(start>=end){
         return;
     }
-    
+    int n=end-start+1;
     //si hay menos elementos en el arreglos que aridad
     if(n<d){
         //ordeno de a 1 elemento
-        merge(arr,start,1,end,n);
+        merge(arr,start,end,n);
         return;
     } 
-    //obtengo largo de los subarreglos
+    //largo de los subarreglos
     int len=int(n/d);
     for(int cut=start; cut<(end-start); cut+=len){
-        mergesort(arr[][],cut,cut+len-1,d,len);
+        mergeSort(arr,cut,cut+len-1,d);
     }
-    merge(arr, start, len, end, d);
+    merge(arr, start, end, d);
     return;
-}*/
-
-int *init_arr(int arr[],int n){
-    int arr_par[n][2];
-    for(int i=0;i<n;i++){
-        arr_par[i][1]=arr[i];
-        arr_par[i][2]=i;
-    }
-
-    return arr_par;
 }
 
 // inverse_perm: int[] x int -> int[]
@@ -87,16 +99,7 @@ int *init_arr(int arr[],int n){
 // Ejemplo:
 // Input: 2 3 4 0 1
 // Output:3 4 0 1 2
-int *inverse_perm_merge(int perm[][], int n){
-    int n_2= int(n/2);
-    int left[n_2][2];
-    int right[n-n_2][2];
-
-    for(int i=0;i<n_2;i++){
-        left[i]=perm[i];
-        right[i]=perm[i+n_2];
-    }
-
+int *inverse_perm(int perm[], int n){
     int *inv_perm = (int *) malloc(n*sizeof(int));
     for(int i=0; i<n; i++){
         inv_perm[perm[i]-1] = i+1;
@@ -106,33 +109,42 @@ int *inverse_perm_merge(int perm[][], int n){
 }
 
 // Testea la funcion inverse_perm para un caso
-void mainforcase (int n, int i, int j, int res[]){
+/*
+n:tamaño del arreglo
+i:exponente
+j:numero del test
+res:arreglo con la duracion de los tests
+d:aridad de mergeSort
+*/
+void mainforcase (int n, int i, int j, int res[],int d){
     //Se crea un arreglo de tamaño n
-    int *arr = new int[n];
+    int *A = new int[n];
 
     //Se llena el arreglo con los numeros del 1 al n
-    std::iota(arr, arr + n, 1);
+    std::iota(A, A + n, 1);
 
     //Se permuta el arreglo de manera aleatoria
-    std::shuffle(arr, arr + n, std::mt19937{std::random_device{}()});
-    
-    //Se crea un arreglo de tamaño n arreglos de dos int
-    int arr_par[n][2];
-    
-    //Se inicializa el arreglo de pares con arr_par[i]=[valor_i,posicion_i]
-    for(int i=0;i<n;i++){
-        //Se guarda el valor
-        arr_par[i][1]=arr[i];
-        //Se guarda su posicion
-        arr_par[i][2]=i+1;
-    }
+    std::shuffle(A, A + n, std::mt19937{std::random_device{}()});
     
     //Se inicia el cronometro
     auto inicio = chrono::high_resolution_clock::now();
+    
+    //Se crea un arreglo de tuplas dimension n x 2 
+    //Se inicializa el arreglo de tuplas con arr_par[i]=[valor_i,posicion_i]
+    int **arr=new int*[n];
+    for(int k=0;k<n;k++){
+        arr[k]=new int[2];
+        arr[k][0]=A[k];
+        arr[k][1]=k+1;
+    }
 
     //Se calcula la permutación inversa con merge sort
-    int *ip = inverse_perm_merge(arr_par, n);
+    mergeSort(arr, 0, n-1, d);
 
+    //Se obtiene la permutacion inversa desde el arreglo de tuplas
+    for(int k=0;k<n;k++){
+        A[k]=arr[k][2];
+    }
     //Se finaliza el cronometro
     auto fin = chrono::high_resolution_clock::now();
 
@@ -154,9 +166,8 @@ void mainforcase (int n, int i, int j, int res[]){
     //Se cierra el archivo
     fclose(f);
 
-    //Se libera la memoria
-    free(ip);  //del arreglo creado en inverse_perm
     delete[] arr;//del arreglo creado
+    delete[] A;
 }
 
 int main(){
@@ -166,13 +177,13 @@ int main(){
     
     int n; //Tamaño del arreglo
     //Testeamos de 2^20 a 2^30
-    for(int i=20; i<=30; i++){
+    for(int i=20; i<=20; i++){
         //Se calcula el n
         n = int(pow(2,i)); //El arreglo debe ser de tamaño 2^i
 
-        //Se abre el archivo donde se guardarán los tiempos
+        //Se abre el archivo donde se guardarán los tiempos 
         FILE *f = fopen("resultados_merge_sort.txt", "a");
-        fprintf(f, "****************Para N=2^%ld****************\n", i);
+        fprintf(f, "**************Para N=2^%ld d=8**************\n", i);
         fclose(f);
 
         //Se declara el arreglo de resultados
@@ -180,7 +191,7 @@ int main(){
 
         //Testeamos 10 veces para el n dado
         for(int j=0; j<10; j++){
-            mainforcase(n,i,j,res);
+            mainforcase(n,i,j,res,8);
         }
         
         //Se abre el archivo para escribir el promedio y la desviacion estandar
