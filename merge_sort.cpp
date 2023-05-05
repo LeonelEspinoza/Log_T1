@@ -26,8 +26,7 @@ void merge(int **arr,int start, int end, int d){
     int *sub_arr_ptr=new int[d];
     for(int i=0;i<d;i++){
         for(int j=0;j<len;j++){
-            sub_arr[i][j][0]=arr[start+i*len+j][0];
-            sub_arr[i][j][1]=arr[start+i*len+j][1];
+            sub_arr[i][j]=arr[start+i*len+j];
         }
         sub_arr_ptr[i]=0;
     }
@@ -61,8 +60,7 @@ void merge(int **arr,int start, int end, int d){
             delete[] mc;
         }
         //guardo el minimo en el arreglo
-        arr[start+c][0]=min[0];
-        arr[start+c][1]=min[1];
+        arr[start+c]=min;
         //saco el elemento del subarreglo que tenia el minimo
         sub_arr_ptr[min_ptr]+=1;
         delete [] min;
@@ -191,7 +189,7 @@ int main(){
 
         //Testeamos 10 veces para el n dado
         for(int j=0; j<10; j++){
-            mainforcase(n,i,j,res,8);
+            mainforcase(n,i,j,res,2);
         }
         
         //Se abre el archivo para escribir el promedio y la desviacion estandar
@@ -210,7 +208,7 @@ int main(){
         //Se calcula la desviacion estandar de los tiempos
         float desv = 0;
         for(int k=0; k<10; k++){
-            desv += pow(res[k]-prom,2);
+            desv += pow(res[k]-prom,8);
         }
         desv = sqrt(desv/10);
 
