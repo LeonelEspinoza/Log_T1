@@ -15,17 +15,13 @@ void merge(int **arr,int start, int end, int d){
     //arreglo de sub_arreglos
     //int sub_arr[d][len][2];
     int ***sub_arr=new int**[d];
+    //arreglo de al posicion del minimo elemento no guardado de cada sub_arreglo
+    //int sub_arr_ptr[d];
+    int *sub_arr_ptr=new int[d];
     for(int i=0; i<d; i++){
         sub_arr[i]=new int*[len];
         for(int j=0;j<len;j++){
             sub_arr[i][j]=new int[2];
-        }
-    }
-    //arreglo de al posicion del minimo elemento no guardado de cada sub_arreglo
-    //int sub_arr_ptr[d];
-    int *sub_arr_ptr=new int[d];
-    for(int i=0;i<d;i++){
-        for(int j=0;j<len;j++){
             sub_arr[i][j]=arr[start+i*len+j];
         }
         sub_arr_ptr[i]=0;
@@ -38,9 +34,7 @@ void merge(int **arr,int start, int end, int d){
             ptr++;
         }
         //obtener el primer elemento del primer sub_arreglo no vacio
-        int *min=new int[2];
-        min[0]=sub_arr[ptr][sub_arr_ptr[ptr]][0];
-        min[1]=sub_arr[ptr][sub_arr_ptr[ptr]][1];
+        int *min=new int[2]{sub_arr[ptr][sub_arr_ptr[ptr]][0],sub_arr[ptr][sub_arr_ptr[ptr]][1]};
         int min_ptr=ptr;
         //busco el minimo elemento de los sub arreglos
         for(int i=0;i<d;i++){
@@ -49,9 +43,7 @@ void merge(int **arr,int start, int end, int d){
                 continue;
             }
             //obtengo el minimo
-            int *mc=new int[2];
-            mc[0]=sub_arr[i][sub_arr_ptr[i]][0];
-            mc[1]=sub_arr[i][sub_arr_ptr[i]][1];
+            int *mc=new int[2]{sub_arr[i][sub_arr_ptr[i]][0],sub_arr[i][sub_arr_ptr[i]][1]};
             if(mc[0]<min[0]){
                 min[0]=mc[0];
                 min[1]=mc[1];
@@ -92,20 +84,6 @@ void mergeSort(int **arr,int start,int end,int d){
     return;
 }
 
-// inverse_perm: int[] x int -> int[]
-// Calcula la inversa de una permutacion con merge sort
-// Ejemplo:
-// Input: 2 3 4 0 1
-// Output:3 4 0 1 2
-int *inverse_perm(int perm[], int n){
-    int *inv_perm = (int *) malloc(n*sizeof(int));
-    for(int i=0; i<n; i++){
-        inv_perm[perm[i]-1] = i+1;
-    }
-
-    return inv_perm;
-}
-
 // Testea la funcion inverse_perm para un caso
 /*
 n:tamaño del arreglo
@@ -119,10 +97,10 @@ void mainforcase (int n, int i, int j, int res[],int d){
     int *A = new int[n];
 
     //Se llena el arreglo con los numeros del 1 al n
-    std::iota(A, A + n, 1);
+    iota(A, A + n, 1);
 
     //Se permuta el arreglo de manera aleatoria
-    std::shuffle(A, A + n, std::mt19937{std::random_device{}()});
+    shuffle(A, A + n, mt19937{random_device{}()});
     
     //Se inicia el cronometro
     auto inicio = chrono::high_resolution_clock::now();
@@ -131,9 +109,7 @@ void mainforcase (int n, int i, int j, int res[],int d){
     //Se inicializa el arreglo de tuplas con arr_par[i]=[valor_i,posicion_i]
     int **arr=new int*[n];
     for(int k=0;k<n;k++){
-        arr[k]=new int[2];
-        arr[k][0]=A[k];
-        arr[k][1]=k+1;
+        arr[k]=new int[2]{A[k],k+1};
     }
 
     //Se calcula la permutación inversa con merge sort
@@ -174,6 +150,7 @@ int main(){
     fclose(f);
     
     int n; //Tamaño del arreglo
+    int d = 2; //Aridad de mergeSort
     //Testeamos de 2^20 a 2^30
     for(int i=20; i<=20; i++){
         //Se calcula el n
@@ -181,7 +158,7 @@ int main(){
 
         //Se abre el archivo donde se guardarán los tiempos 
         FILE *f = fopen("resultados_merge_sort.txt", "a");
-        fprintf(f, "**************Para N=2^%ld d=8**************\n", i);
+        fprintf(f, "**************Para N=2^%d d=%d**************\n", i, d);
         fclose(f);
 
         //Se declara el arreglo de resultados
@@ -189,7 +166,7 @@ int main(){
 
         //Testeamos 10 veces para el n dado
         for(int j=0; j<10; j++){
-            mainforcase(n,i,j,res,2);
+            mainforcase(n,i,j,res,d);
         }
         
         //Se abre el archivo para escribir el promedio y la desviacion estandar
@@ -208,7 +185,7 @@ int main(){
         //Se calcula la desviacion estandar de los tiempos
         float desv = 0;
         for(int k=0; k<10; k++){
-            desv += pow(res[k]-prom,8);
+            desv += pow(res[k]-prom,2);
         }
         desv = sqrt(desv/10);
 

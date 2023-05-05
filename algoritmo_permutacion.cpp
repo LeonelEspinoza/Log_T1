@@ -26,10 +26,10 @@ void mainforcase (int n, int i, int j, int res[]){
     int *arr = new int[n];
 
     //Se llena el arreglo con los numeros del 1 al n
-    std::iota(arr, arr + n, 1);
+    iota(arr, arr + n, 1);
 
     //Se permuta el arreglo de manera aleatoria
-    std::shuffle(arr, arr + n, std::mt19937{std::random_device{}()});
+    shuffle(arr, arr + n, mt19937{random_device{}()});
 
     //Se inicia el cronometro
     auto inicio = chrono::high_resolution_clock::now();
