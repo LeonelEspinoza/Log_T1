@@ -17,7 +17,7 @@ void merge(int **arr,int start, int end, int d){
     int ***sub_arr=new int**[d];
     //arreglo de al posicion del minimo elemento no guardado de cada sub_arreglo
     //int sub_arr_ptr[d];
-    int *sub_arr_ptr=new int[d];
+    int sub_arr_ptr[d];
     for(int i=0; i<d; i++){
         sub_arr[i]=new int*[len];
         for(int j=0;j<len;j++){
@@ -33,7 +33,7 @@ void merge(int **arr,int start, int end, int d){
             ptr++;
         }
         //obtener el primer elemento del primer sub_arreglo no vacio
-        int *min=new int[2]{sub_arr[ptr][sub_arr_ptr[ptr]][0],sub_arr[ptr][sub_arr_ptr[ptr]][1]};
+        int min[2]={sub_arr[ptr][sub_arr_ptr[ptr]][0],sub_arr[ptr][sub_arr_ptr[ptr]][1]};
         int min_ptr=ptr;
         //busco el minimo elemento de los sub arreglos
         for(int i=0;i<d;i++){
@@ -42,23 +42,20 @@ void merge(int **arr,int start, int end, int d){
                 continue;
             }
             //obtengo el minimo
-            int *mc=new int[2]{sub_arr[i][sub_arr_ptr[i]][0],sub_arr[i][sub_arr_ptr[i]][1]};
+            int mc[2]={sub_arr[i][sub_arr_ptr[i]][0],sub_arr[i][sub_arr_ptr[i]][1]};
             if(mc[0]<min[0]){
                 min[0]=mc[0];
                 min[1]=mc[1];
                 min_ptr=i;
             }
-            delete[] mc;
         }
         //guardo el minimo en el arreglo
         arr[start+c][0]=min[0];
         arr[start+c][1]=min[1];
         //saco el elemento del subarreglo que tenia el minimo
         sub_arr_ptr[min_ptr]+=1;
-        delete [] min;
     }
     delete [] sub_arr;
-    delete [] sub_arr_ptr;
     return;
 }
 
