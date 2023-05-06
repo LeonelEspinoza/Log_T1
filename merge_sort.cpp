@@ -21,8 +21,7 @@ void merge(int **arr,int start, int end, int d){
     for(int i=0; i<d; i++){
         sub_arr[i]=new int*[len];
         for(int j=0;j<len;j++){
-            sub_arr[i][j]=new int[2];
-            sub_arr[i][j]=arr[start+i*len+j];
+            sub_arr[i][j]=new int[2]{arr[start+i*len+j][0],arr[start+i*len+j][1]};
         }
         sub_arr_ptr[i]=0;
     }
@@ -52,7 +51,8 @@ void merge(int **arr,int start, int end, int d){
             delete[] mc;
         }
         //guardo el minimo en el arreglo
-        arr[start+c]=min;
+        arr[start+c][0]=min[0];
+        arr[start+c][1]=min[1];
         //saco el elemento del subarreglo que tenia el minimo
         sub_arr_ptr[min_ptr]+=1;
         delete [] min;
@@ -143,6 +143,11 @@ void mainforcase (int n, int i, int j, int res[],int d){
     delete[] arr;//del arreglo creado
     delete[] A;
 }
+void display(int **arr, int size) {
+  for (int i = 0; i < size; i++)
+    cout << "("<< arr[i][0] << ","<< arr[i][1]<< ") ";
+  cout << "\n"<< endl;
+}
 
 int main(){
     //Se crea el archivo donde se guardaran los resultados
@@ -151,6 +156,22 @@ int main(){
     
     int n; //Tamaño del arreglo
     int d = 2; //Aridad de mergeSort
+    
+    const int size=8;
+    int B[size]={3,4,2,1,8,7,6,5};
+    int **arr=new int*[size];
+    for(int i=0;i<size;i++){
+        arr[i]=new int[2];
+        arr[i][0]=B[i];
+        arr[i][1]=i+1;
+    }
+    cout << "Original array \n";
+    display(arr, size);  
+  
+    mergeSort(arr, 0, size-1,8);
+
+    cout << "Sorted array \n";
+    display(arr, size);
     //Testeamos de 2^20 a 2^30
     for(int i=20; i<=20; i++){
         //Se calcula el n
