@@ -7,6 +7,90 @@
 
 using namespace std;
 
+//Clase para el min heap
+class MinHeap {
+private:
+    int*** arr;
+    int capacity;
+    int size;
+
+public:
+    MinHeap(int capacity) {
+        this->capacity = capacity;
+        arr = new int**[capacity];
+        size = 0;
+    }
+
+    ~MinHeap() {
+        delete[] arr;
+    }
+
+    int getParentIndex(int childIndex) {
+        return (childIndex - 1) / 2;
+    }
+
+    int getLeftChildIndex(int parentIndex) {
+        return (2 * parentIndex) + 1;
+    }
+
+    int getRightChildIndex(int parentIndex) {
+        return (2 * parentIndex) + 2;
+    }
+
+    void swap(int** &a, int** &b) {
+        int** temp = a;
+        a = b;
+        b = temp;
+    }
+
+    void heapifyUp(int index) {
+        int parentIndex = getParentIndex(index);
+        if (index > 0 && (*arr[index])[0] < (*arr[parentIndex])[0]) {
+            swap(arr[index], arr[parentIndex]);
+            heapifyUp(parentIndex);
+        }
+    }
+
+    void heapifyDown(int index) {
+        int smallest = index;
+        int leftChildIndex = getLeftChildIndex(index);
+        int rightChildIndex = getRightChildIndex(index);
+
+        if (leftChildIndex < size && (*arr[leftChildIndex])[0] < (*arr[smallest])[0])
+            smallest = leftChildIndex;
+
+        if (rightChildIndex < size && (*arr[rightChildIndex])[0] < (*arr[smallest])[0])
+            smallest = rightChildIndex;
+
+        if (smallest != index) {
+            swap(arr[index], arr[smallest]);
+            heapifyDown(smallest);
+        }
+    }
+
+    void insert(int** value) {
+        arr[size] = value;
+        heapifyUp(size);
+        size++;
+    }
+
+    int** remove() {
+        int** min = arr[0];
+        arr[0] = arr[size - 1];
+        size--;
+        heapifyDown(0);
+        return min;
+    }
+
+    void print() {
+        for (int i = 0; i < size; i++) {
+            std::cout << "("<<(*arr[i])[0] << ","<<(*arr[i])[1] << ") ";
+        }
+        std::cout << std::endl;
+    }
+};
+
+
 void merge(int **arr,int start, int end, int d){
     //cantidad de elementos a ordenar
     int n=end-start+1;
