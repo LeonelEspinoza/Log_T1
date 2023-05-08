@@ -48,15 +48,20 @@ void mainforcase (int n, int i, int j, int res[]){
 
     //Se abre el archivo donde se guardarán los tiempos
     FILE *f = fopen("resultados_algoritmo_permutacion.txt", "a"); //append
+    FILE *g = fopen("resultados_algoritmo_permutacion.csv", "a"); //append
+    
 
     //Se escribe el numero del test
     fprintf(f, "Test %d:\n", j+1);
+    fprintf(g, "Test %d;", j+1);
 
     //Se escribe el tiempo en el archivo
     fprintf(f, "La funcion tardo %ld milisegundos en ejecutarse.\n\n", duracion);
+    fprintf(g, "%ld\n", duracion);
 
     //Se cierra el archivo
     fclose(f);
+    fclose(g);
 
     //Se libera la memoria
     free(ip);  //del arreglo creado en inverse_perm
@@ -67,10 +72,14 @@ int main(){
     //Se crea el archivo donde se guardaran los resultados
     FILE *f = fopen("resultados_algoritmo_permutacion.txt", "w+");
     fclose(f);
+
+    FILE *g = fopen("resultados_algoritmo_permutacion.csv", "w+");
+    fclose(g);
+    
     
     int n; //Tamaño del arreglo
     //Testeamos de 2^20 a 2^30
-    for(int i=20; i<=20; i++){
+    for(int i=25; i<=25; i++){
         //Se calcula el n
         n = int(pow(2,i)); //El arreglo debe ser de tamaño 2^i
 
@@ -78,6 +87,10 @@ int main(){
         FILE *f = fopen("resultados_algoritmo_permutacion.txt", "a");
         fprintf(f, "****************Para N=2^%ld****************\n", i);
         fclose(f);
+
+        FILE *g = fopen("resultados_algoritmo_permutacion.csv", "a");
+        fprintf(g, "****************Para N=2^%ld****************\n", i);
+        fclose(g);
 
         //Se declara el arreglo de resultados
         int res[10];
