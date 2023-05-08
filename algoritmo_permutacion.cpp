@@ -79,7 +79,7 @@ int main(){
     
     int n; //Tamaño del arreglo
     //Testeamos de 2^20 a 2^30
-    for(int i=25; i<=25; i++){
+    for(int i=20; i<=30; i++){
         //Se calcula el n
         n = int(pow(2,i)); //El arreglo debe ser de tamaño 2^i
 

@@ -1,34 +1,245 @@
-****************Para N=2^25****************
+****************Para N=2^20****************
 Test 1:
-La funcion tardo 659 milisegundos en ejecutarse.
+La funcion tardo 4 milisegundos en ejecutarse.
 
 Test 2:
-La funcion tardo 431 milisegundos en ejecutarse.
+La funcion tardo 3 milisegundos en ejecutarse.
 
 Test 3:
-La funcion tardo 439 milisegundos en ejecutarse.
+La funcion tardo 3 milisegundos en ejecutarse.
 
 Test 4:
-La funcion tardo 407 milisegundos en ejecutarse.
+La funcion tardo 3 milisegundos en ejecutarse.
 
 Test 5:
-La funcion tardo 459 milisegundos en ejecutarse.
+La funcion tardo 3 milisegundos en ejecutarse.
 
 Test 6:
-La funcion tardo 425 milisegundos en ejecutarse.
+La funcion tardo 3 milisegundos en ejecutarse.
 
 Test 7:
-La funcion tardo 449 milisegundos en ejecutarse.
+La funcion tardo 3 milisegundos en ejecutarse.
 
 Test 8:
-La funcion tardo 432 milisegundos en ejecutarse.
+La funcion tardo 3 milisegundos en ejecutarse.
 
 Test 9:
-La funcion tardo 431 milisegundos en ejecutarse.
+La funcion tardo 3 milisegundos en ejecutarse.
 
 Test 10:
-La funcion tardo 420 milisegundos en ejecutarse.
+La funcion tardo 3 milisegundos en ejecutarse.
 
-El promedio de tiempo es: 455.200012 milisegundos.
-La desviacion estandar es: 69.306282 milisegundos.
+El promedio de tiempo es: 3.100000 milisegundos.
+La desviacion estandar es: 0.300000 milisegundos.
+
+****************Para N=2^21****************
+Test 1:
+La funcion tardo 7 milisegundos en ejecutarse.
+
+Test 2:
+La funcion tardo 8 milisegundos en ejecutarse.
+
+Test 3:
+La funcion tardo 6 milisegundos en ejecutarse.
+
+Test 4:
+La funcion tardo 8 milisegundos en ejecutarse.
+
+Test 5:
+La funcion tardo 9 milisegundos en ejecutarse.
+
+Test 6:
+La funcion tardo 7 milisegundos en ejecutarse.
+
+Test 7:
+La funcion tardo 9 milisegundos en ejecutarse.
+
+Test 8:
+La funcion tardo 7 milisegundos en ejecutarse.
+
+Test 9:
+La funcion tardo 7 milisegundos en ejecutarse.
+
+Test 10:
+La funcion tardo 7 milisegundos en ejecutarse.
+
+El promedio de tiempo es: 7.500000 milisegundos.
+La desviacion estandar es: 0.921954 milisegundos.
+
+****************Para N=2^22****************
+Test 1:
+La funcion tardo 25 milisegundos en ejecutarse.
+
+Test 2:
+La funcion tardo 24 milisegundos en ejecutarse.
+
+Test 3:
+La funcion tardo 27 milisegundos en ejecutarse.
+
+Test 4:
+La funcion tardo 29 milisegundos en ejecutarse.
+
+Test 5:
+La funcion tardo 32 milisegundos en ejecutarse.
+
+Test 6:
+La funcion tardo 29 milisegundos en ejecutarse.
+
+Test 7:
+La funcion tardo 28 milisegundos en ejecutarse.
+
+Test 8:
+La funcion tardo 25 milisegundos en ejecutarse.
+
+Test 9:
+La funcion tardo 28 milisegundos en ejecutarse.
+
+Test 10:
+La funcion tardo 33 milisegundos en ejecutarse.
+
+El promedio de tiempo es: 28.000000 milisegundos.
+La desviacion estandar es: 2.792848 milisegundos.
+
+****************Para N=2^23****************
+Test 1:
+La funcion tardo 101 milisegundos en ejecutarse.
+
+Test 2:
+La funcion tardo 93 milisegundos en ejecutarse.
+
+Test 3:
+La funcion tardo 86 milisegundos en ejecutarse.
+
+Test 4:
+La funcion tardo 88 milisegundos en ejecutarse.
+
+Test 5:
+La funcion tardo 101 milisegundos en ejecutarse.
+
+Test 6:
+La funcion tardo 123 milisegundos en ejecutarse.
+
+Test 7:
+La funcion tardo 125 milisegundos en ejecutarse.
+
+Test 8:
+La funcion tardo 90 milisegundos en ejecutarse.
+
+Test 9:
+La funcion tardo 87 milisegundos en ejecutarse.
+
+Test 10:
+La funcion tardo 93 milisegundos en ejecutarse.
+
+El promedio de tiempo es: 98.699997 milisegundos.
+La desviacion estandar es: 13.587127 milisegundos.
+
+****************Para N=2^24****************
+Test 1:
+La funcion tardo 215 milisegundos en ejecutarse.
+
+Test 2:
+La funcion tardo 216 milisegundos en ejecutarse.
+
+Test 3:
+La funcion tardo 207 milisegundos en ejecutarse.
+
+Test 4:
+La funcion tardo 245 milisegundos en ejecutarse.
+
+Test 5:
+La funcion tardo 244 milisegundos en ejecutarse.
+
+Test 6:
+La funcion tardo 228 milisegundos en ejecutarse.
+
+Test 7:
+La funcion tardo 259 milisegundos en ejecutarse.
+
+Test 8:
+La funcion tardo 276 milisegundos en ejecutarse.
+
+Test 9:
+La funcion tardo 220 milisegundos en ejecutarse.
+
+Test 10:
+La funcion tardo 240 milisegundos en ejecutarse.
+
+El promedio de tiempo es: 235.000000 milisegundos.
+La desviacion estandar es: 20.692995 milisegundos.
+
+****************Para N=2^25****************
+Test 1:
+La funcion tardo 462 milisegundos en ejecutarse.
+
+Test 2:
+La funcion tardo 482 milisegundos en ejecutarse.
+
+Test 3:
+La funcion tardo 510 milisegundos en ejecutarse.
+
+Test 4:
+La funcion tardo 488 milisegundos en ejecutarse.
+
+Test 5:
+La funcion tardo 510 milisegundos en ejecutarse.
+
+Test 6:
+La funcion tardo 513 milisegundos en ejecutarse.
+
+Test 7:
+La funcion tardo 493 milisegundos en ejecutarse.
+
+Test 8:
+La funcion tardo 448 milisegundos en ejecutarse.
+
+Test 9:
+La funcion tardo 530 milisegundos en ejecutarse.
+
+Test 10:
+La funcion tardo 473 milisegundos en ejecutarse.
+
+El promedio de tiempo es: 490.899994 milisegundos.
+La desviacion estandar es: 24.155537 milisegundos.
+
+****************Para N=2^26****************
+Test 1:
+La funcion tardo 1199 milisegundos en ejecutarse.
+
+Test 2:
+La funcion tardo 956 milisegundos en ejecutarse.
+
+Test 3:
+La funcion tardo 929 milisegundos en ejecutarse.
+
+Test 4:
+La funcion tardo 932 milisegundos en ejecutarse.
+
+Test 5:
+La funcion tardo 1043 milisegundos en ejecutarse.
+
+Test 6:
+La funcion tardo 995 milisegundos en ejecutarse.
+
+Test 7:
+La funcion tardo 990 milisegundos en ejecutarse.
+
+Test 8:
+La funcion tardo 1054 milisegundos en ejecutarse.
+
+Test 9:
+La funcion tardo 1101 milisegundos en ejecutarse.
+
+Test 10:
+La funcion tardo 1078 milisegundos en ejecutarse.
+
+El promedio de tiempo es: 1027.699951 milisegundos.
+La desviacion estandar es: 80.438850 milisegundos.
+
+****************Para N=2^27****************
+Test 1:
+La funcion tardo 1960 milisegundos en ejecutarse.
+
+Test 2:
+La funcion tardo 1823 milisegundos en ejecutarse.
 
