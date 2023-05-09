@@ -1,0 +1,38 @@
+**************Para N=2^28 d=8**************
+Test 1:
+La funcion tardo 67670 milisegundos en ejecutarse.
+
+Test 2:
+La funcion tardo 86693 milisegundos en ejecutarse.
+
+Test 3:
+La funcion tardo 104910 milisegundos en ejecutarse.
+
+Test 4:
+La funcion tardo 98916 milisegundos en ejecutarse.
+
+Test 5:
+La funcion tardo 98837 milisegundos en ejecutarse.
+
+Test 6:
+La funcion tardo 104854 milisegundos en ejecutarse.
+
+Test 7:
+La funcion tardo 102844 milisegundos en ejecutarse.
+
+Test 8:
+La funcion tardo 105001 milisegundos en ejecutarse.
+
+Test 9:
+La funcion tardo 104570 milisegundos en ejecutarse.
+
+Test 10:
+La funcion tardo 99246 milisegundos en ejecutarse.
+
+El promedio de tiempo es: 97354.101562 milisegundos.
+La desviacion estandar es: 11211.806641 milisegundos.
+
+**************Para N=2^29 d=8**************
+Test 1:
+La funcion tardo 1399411 milisegundos en ejecutarse.
+

@@ -1,0 +1,30 @@
+**************Para N=2^20 d=2**************
+Test 1:
+La funcion tardo 281 milisegundos en ejecutarse.
+
+Test 2:
+La funcion tardo 260 milisegundos en ejecutarse.
+
+El promedio de tiempo es: 270.500000 milisegundos.
+La desviacion estandar es: 4.695743 milisegundos.
+
+**************Para N=2^21 d=2**************
+Test 1:
+La funcion tardo 554 milisegundos en ejecutarse.
+
+Test 2:
+La funcion tardo 603 milisegundos en ejecutarse.
+
+El promedio de tiempo es: 578.500000 milisegundos.
+La desviacion estandar es: 10.956734 milisegundos.
+
+**************Para N=2^22 d=2**************
+Test 1:
+La funcion tardo 1017 milisegundos en ejecutarse.
+
+Test 2:
+La funcion tardo 987 milisegundos en ejecutarse.
+
+El promedio de tiempo es: 1002.000000 milisegundos.
+La desviacion estandar es: 6.708204 milisegundos.
+

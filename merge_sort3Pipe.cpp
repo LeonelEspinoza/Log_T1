@@ -173,7 +173,7 @@ int main(){
     fclose(f);
     
     int n; //Tamaño del arreglo
-    int d = 2; //Aridad de mergeSort
+    int d = 8; //Aridad de mergeSort
 
     const int size=8;
     int B[size]={3,4,2,1,8,7,6,5};
@@ -192,7 +192,7 @@ int main(){
     display(arr, size);    
 
     //Testeamos de 2^20 a 2^30
-    for(int i=20; i<=30; i++){
+    for(int i=30; i<=30; i++){
         //Se calcula el n
         n = int(pow(2,i)); //El arreglo debe ser de tamaño 2^i
 
