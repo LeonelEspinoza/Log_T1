@@ -192,13 +192,16 @@ void mainforcase (int n, int i, int j, int res[],int d){
     for(int k=0;k<n;k++){
         arr[k]=new int[2]{A[k],k+1};
     }
+    delete[] A; //del arreglo input
 
     //Se calcula la permutación inversa con merge sort
     mergeSort(arr, 0, n-1, d);
 
     //Se obtiene la permutacion inversa desde el arreglo de tuplas
+    int *B = new int[n];
+    //Se obtiene la permutacion inversa desde el arreglo de tuplas
     for(int k=0;k<n;k++){
-        A[k]=arr[k][2];
+        B[k]=arr[k][2];
     }
     //Se finaliza el cronometro
     auto fin = chrono::high_resolution_clock::now();
@@ -220,9 +223,11 @@ void mainforcase (int n, int i, int j, int res[],int d){
 
     //Se cierra el archivo
     fclose(f);
-
+    delete[] B; //del arreglo permutacion inversa
+    for (int k = 0; k < n; k++) {
+        delete[] arr[k]; // liberas la memoria de cada subarreglo
+    }    
     delete[] arr;//del arreglo creado
-    delete[] A;
 }
 void display(int **arr, int size) {
   for (int i = 0; i < size; i++)
