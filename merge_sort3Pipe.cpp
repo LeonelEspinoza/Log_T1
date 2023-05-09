@@ -171,9 +171,10 @@ int main(){
     //Se crea el archivo donde se guardaran los resultados
     FILE *f = fopen("resultados_merge_sort.txt", "w+");
     fclose(f);
-    
+    FILE *g = fopen("resultados_merge_sort.csv", "w+");
+    fclose(g);    
     int n; //Tamaño del arreglo
-    int d = 2; //Aridad de mergeSort
+    int d = 8; //Aridad de mergeSort
 
     const int size=8;
     int B[size]={3,4,2,1,8,7,6,5};
